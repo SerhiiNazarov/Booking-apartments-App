@@ -28,7 +28,7 @@ export default [
       city: "Poltava",
     },
     owner: {
-      name: "Leonor",
+      name: "Leonor D",
       phone: "565-314-3112",
       email: "Forest.Prosacco53@gmail.com",
     },
