@@ -14,22 +14,19 @@ const routes = [
     path: "/",
     component: Homepage,
     name: "homepage",
+    meta: { requiresAuth: true },
   },
   {
     path: "/apartments/:id",
     component: Apartment,
     name: "apartment",
-    meta: {
-      requiresAuth: true,
-    },
+    meta: { requiresAuth: true },
   },
   {
     path: "/my-orders",
     component: MyOrdersPage,
     name: "my-orders",
-    meta: {
-      requiresAuth: true,
-    },
+    meta: { requiresAuth: true },
   },
   {
     path: "/login",
@@ -65,12 +62,14 @@ router.beforeEach((to, from, next) => {
   if (to.matched.some((record) => record.meta.requiresAuth)) {
     if (!isLoggedIn) {
       next({ name: "login-page" });
+      return;
     }
   }
 
   if (to.matched.some((record) => record.meta.hideForAuth)) {
     if (isLoggedIn) {
       next({ name: "homepage" });
+      return;
     }
   }
 
